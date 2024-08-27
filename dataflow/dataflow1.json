@@ -19,13 +19,21 @@
 					"name": "Orders"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable4",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "join1"
 				},
 				{
-					"name": "derivedColumn1"
+					"name": "NETPrice"
 				},
 				{
 					"name": "select1"
@@ -34,10 +42,10 @@
 					"name": "aggregate1"
 				},
 				{
-					"name": "aggregate2"
+					"name": "UNIQUEinCustomer"
 				},
 				{
-					"name": "aggregate3"
+					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -70,14 +78,14 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> Orders",
-				"aggregate2, Orders join(aggregate2@CustomerID == Orders@CustomerID,",
+				"UNIQUEinCustomer, Orders join(UNIQUEinCustomer@CustomerID == Orders@CustomerID,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
-				"join1 derive({net price} = multiply(toInteger(Quantity), toDouble(Price))) ~> derivedColumn1",
-				"derivedColumn1 select(mapColumn(",
-				"          CustomerID = Customers@CustomerID,",
+				"join1 derive({net price} = multiply(toInteger(Quantity), toDouble(Price))) ~> NETPrice",
+				"NETPrice select(mapColumn(",
+				"          CustomerID = UNIQUEinCustomer@CustomerID,",
 				"          FirstName,",
 				"          LastName,",
 				"          Email,",
@@ -125,15 +133,57 @@
 				"          State,",
 				"          ZipCode,",
 				"          Country),",
-				"     count = count(CustomerID)) ~> aggregate2",
-				"Orders aggregate(groupBy(OrderID,",
+				"     count = count(CustomerID)) ~> UNIQUEinCustomer",
+				"aggregate1 select(mapColumn(",
+				"          CustomerID,",
+				"          FirstName,",
+				"          LastName,",
+				"          Email,",
+				"          PhoneNumber,",
+				"          Address,",
+				"          City,",
+				"          State,",
+				"          ZipCode,",
+				"          Country,",
+				"          OrderID,",
 				"          ProductID,",
 				"          ProductName,",
 				"          Quantity,",
 				"          OrderTimestamp,",
 				"          Price,",
-				"          CustomerID),",
-				"     count = count(OrderID)) ~> aggregate3"
+				"          {net price}",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"select2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          CustomerID as string,",
+				"          FirstName as string,",
+				"          LastName as string,",
+				"          Email as string,",
+				"          PhoneNumber as string,",
+				"          Address as string,",
+				"          City as string,",
+				"          State as string,",
+				"          ZipCode as string,",
+				"          Country as string,",
+				"          OrderID as string,",
+				"          ProductID as string,",
+				"          ProductName as string,",
+				"          Quantity as string,",
+				"          OrderTimestamp as string,",
+				"          Price as string,",
+				"          {net price} as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 			]
 		}
 	}
