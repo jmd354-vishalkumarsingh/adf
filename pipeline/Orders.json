@@ -28,13 +28,7 @@
 						}
 					},
 					"enableStaging": false
-				},
-				"outputs": [
-					{
-						"referenceName": "Order_Detail",
-						"type": "DatasetReference"
-					}
-				]
+				}
 			}
 		],
 		"annotations": []
