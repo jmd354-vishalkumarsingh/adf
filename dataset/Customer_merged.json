@@ -11,6 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "customer.csv",
+				"folderPath": "Customer",
 				"container": "output-data"
 			},
 			"columnDelimiter": ",",
