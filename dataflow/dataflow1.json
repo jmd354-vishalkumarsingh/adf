@@ -60,11 +60,11 @@
 				"          LastName,",
 				"          Email,",
 				"          PhoneNumber,",
-				"          PhoneNumber,",
 				"          Address,",
 				"          City,",
-				"          {} = ERROR_FUNCTION(''),",
-				"          {} = ERROR_FUNCTION(''))) ~> aggregate1"
+				"          State,",
+				"          ZipCode,",
+				"          Country)) ~> aggregate1"
 			]
 		}
 	}
