@@ -51,7 +51,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 filter(CustomerID == \"C007\") ~> filter1"
+				"select1 filter(ERROR_FUNCTION('isNull(CustomerID) == false() && isNull(FirstName) == false() && isNull(LastName) == false() && isNull(Email) == false() __NEW_LINE_R____NEW_LINE_N__&& isNull(PhoneNumber) == false() && isNull(Address) == false() && isNull(City) == false() __NEW_LINE_R____NEW_LINE_N__&& isNull(State) == false() && isNull(ZipCode) == false() && isNull(Country) == false()Email')) ~> filter1"
 			]
 		}
 	}
