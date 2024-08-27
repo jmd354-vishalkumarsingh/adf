@@ -13,11 +13,7 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [
-				{
-					"name": "filter1"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"source(output(",
 				"          CustomerID as string,",
@@ -33,10 +29,7 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Customers",
-				"Customers filter(isNull(CustomerID) == false() && isNull(FirstName) == false() && isNull(LastName) == false() && isNull(Email) == false() \r",
-				"&& isNull(PhoneNumber) == false() && isNull(Address) == false() && isNull(City) == false() \r",
-				"&& isNull(State) == false() && isNull(ZipCode) == false() && isNull(Country) == false()) ~> filter1"
+				"     ignoreNoFilesFound: false) ~> Customers"
 			]
 		}
 	}
