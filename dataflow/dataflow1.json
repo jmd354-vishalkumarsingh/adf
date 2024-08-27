@@ -107,10 +107,7 @@
 				"          Quantity,",
 				"          OrderTimestamp,",
 				"          Price,",
-				"          {net price},",
-				"          {} = ERROR_FUNCTION(''),",
-				"          {} = ERROR_FUNCTION(''),",
-				"          {} = ERROR_FUNCTION('')),",
+				"          {net price}),",
 				"     count = count(CustomerID)) ~> aggregate1"
 			]
 		}
