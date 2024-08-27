@@ -10,6 +10,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "Customers"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable2",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
 				}
 			],
 			"sinks": [],
@@ -29,7 +36,11 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Customers"
+				"     ignoreNoFilesFound: false) ~> Customers",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1"
 			]
 		}
 	}
