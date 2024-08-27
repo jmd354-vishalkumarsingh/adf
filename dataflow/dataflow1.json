@@ -129,7 +129,11 @@
 				"Orders aggregate(groupBy(OrderID,",
 				"          ProductID,",
 				"          ProductName,",
-				"          {} = ERROR_FUNCTION(''))) ~> aggregate3"
+				"          Quantity,",
+				"          OrderTimestamp,",
+				"          Price,",
+				"          CustomerID),",
+				"     count = count(OrderID)) ~> aggregate3"
 			]
 		}
 	}
