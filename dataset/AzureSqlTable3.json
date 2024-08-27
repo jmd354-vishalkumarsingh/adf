@@ -1,0 +1,45 @@
+{
+	"name": "AzureSqlTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "OrderID",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductID",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductName",
+				"type": "varchar"
+			},
+			{
+				"name": "Quantity",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderTimestamp",
+				"type": "varchar"
+			},
+			{
+				"name": "Price",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerID",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "order_details"
+		}
+	}
+}

@@ -13,7 +13,7 @@
 				},
 				{
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "AzureSqlTable3",
 						"type": "DatasetReference"
 					},
 					"name": "Orders"
@@ -42,7 +42,16 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> Customers",
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          OrderID as string,",
+				"          ProductID as string,",
+				"          ProductName as string,",
+				"          Quantity as string,",
+				"          OrderTimestamp as string,",
+				"          Price as string,",
+				"          CustomerID as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> Orders",
