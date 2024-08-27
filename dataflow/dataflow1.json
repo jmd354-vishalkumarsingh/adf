@@ -55,7 +55,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> Orders",
-				"Customers aggregate(groupBy(CustomerID)) ~> aggregate1"
+				"Customers aggregate(groupBy(CustomerID = max(CustomerID))) ~> aggregate1"
 			]
 		}
 	}
