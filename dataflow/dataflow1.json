@@ -9,7 +9,7 @@
 						"referenceName": "Customer",
 						"type": "DatasetReference"
 					},
-					"name": "Customer"
+					"name": "Customers"
 				}
 			],
 			"sinks": [],
@@ -17,7 +17,7 @@
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Customer"
+				"     ignoreNoFilesFound: false) ~> Customers"
 			]
 		}
 	}
