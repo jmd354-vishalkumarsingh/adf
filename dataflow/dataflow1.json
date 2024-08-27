@@ -64,7 +64,8 @@
 				"          City,",
 				"          State,",
 				"          ZipCode,",
-				"          Country)) ~> aggregate1"
+				"          Country),",
+				"     CustomerID = max(CustomerID)) ~> aggregate1"
 			]
 		}
 	}
