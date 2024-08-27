@@ -32,6 +32,9 @@
 				},
 				{
 					"name": "aggregate1"
+				},
+				{
+					"name": "aggregate2"
 				}
 			],
 			"scriptLines": [
@@ -64,7 +67,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> Orders",
-				"Customers, Orders join(Customers@CustomerID == Orders@CustomerID,",
+				"aggregate2, Orders join(Customers@CustomerID == Orders@CustomerID,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
@@ -108,7 +111,17 @@
 				"          OrderTimestamp,",
 				"          Price,",
 				"          {net price}),",
-				"     count = count(CustomerID)) ~> aggregate1"
+				"     count = count(CustomerID)) ~> aggregate1",
+				"Customers aggregate(groupBy(CustomerID,",
+				"          FirstName,",
+				"          LastName,",
+				"          Email,",
+				"          PhoneNumber,",
+				"          Address,",
+				"          City,",
+				"          State,",
+				"          {} = ERROR_FUNCTION(''),",
+				"          {} = ERROR_FUNCTION(''))) ~> aggregate2"
 			]
 		}
 	}
