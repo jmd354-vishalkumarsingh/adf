@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Customers",
+						"referenceName": "AzureSqlTable2",
 						"type": "DatasetReference"
 					},
 					"name": "Customers"
@@ -16,31 +16,20 @@
 						"referenceName": "AzureSqlTable2",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "Orders"
 				}
 			],
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				"source(output(",
-				"          CustomerID as string,",
-				"          FirstName as string,",
-				"          LastName as string,",
-				"          Email as string,",
-				"          PhoneNumber as string,",
-				"          Address as string,",
-				"          City as string,",
-				"          State as string,",
-				"          ZipCode as string,",
-				"          Country as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Customers",
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> source1"
+				"     format: 'table') ~> Customers",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> Orders"
 			]
 		}
 	}
