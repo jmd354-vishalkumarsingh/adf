@@ -26,6 +26,9 @@
 				},
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -63,7 +66,17 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
-				"join1 derive({net price} = multiply(toInteger(Quantity), toDouble(Price))) ~> derivedColumn1"
+				"join1 derive({net price} = multiply(toInteger(Quantity), toDouble(Price))) ~> derivedColumn1",
+				"derivedColumn1 aggregate(groupBy(Customers@CustomerID,",
+				"          FirstName,",
+				"          LastName,",
+				"          Email,",
+				"          PhoneNumber,",
+				"          Address,",
+				"          City,",
+				"          State,",
+				"          ZipCode,",
+				"          {} = ERROR_FUNCTION(''))) ~> aggregate1"
 			]
 		}
 	}
