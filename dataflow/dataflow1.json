@@ -81,8 +81,11 @@
 				"          ProductID,",
 				"          ProductName,",
 				"          Quantity,",
-				"          {} = ERROR_FUNCTION(''),",
-				"          {} = ERROR_FUNCTION(''))) ~> aggregate1"
+				"          OrderTimestamp,",
+				"          Price,",
+				"          Orders@CustomerID,",
+				"          {net price}),",
+				"     {net price} = ERROR_FUNCTION('max(net price)')) ~> aggregate1"
 			]
 		}
 	}
