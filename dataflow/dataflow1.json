@@ -67,7 +67,8 @@
 				"          City,",
 				"          State,",
 				"          ZipCode,",
-				"          Country)) ~> aggregate1",
+				"          Country),",
+				"     column1 = ERROR_FUNCTION('')) ~> aggregate1",
 				"Customers sort(asc(CustomerID, true)) ~> sort1"
 			]
 		}
