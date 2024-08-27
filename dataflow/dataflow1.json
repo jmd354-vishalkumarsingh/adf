@@ -63,7 +63,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
-				"join1 derive() ~> derivedColumn1"
+				"join1 derive({net price} = ERROR_FUNCTION('')) ~> derivedColumn1"
 			]
 		}
 	}
