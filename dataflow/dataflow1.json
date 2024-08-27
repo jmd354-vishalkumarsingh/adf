@@ -76,6 +76,12 @@
 				"          City,",
 				"          State,",
 				"          ZipCode,",
+				"          Country,",
+				"          OrderID,",
+				"          ProductID,",
+				"          ProductName,",
+				"          Quantity,",
+				"          {} = ERROR_FUNCTION(''),",
 				"          {} = ERROR_FUNCTION(''))) ~> aggregate1"
 			]
 		}
