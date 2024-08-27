@@ -35,6 +35,9 @@
 				},
 				{
 					"name": "aggregate2"
+				},
+				{
+					"name": "aggregate3"
 				}
 			],
 			"scriptLines": [
@@ -122,7 +125,11 @@
 				"          State,",
 				"          ZipCode,",
 				"          Country),",
-				"     count = count(CustomerID)) ~> aggregate2"
+				"     count = count(CustomerID)) ~> aggregate2",
+				"Orders aggregate(groupBy(OrderID,",
+				"          ProductID,",
+				"          ProductName,",
+				"          {} = ERROR_FUNCTION(''))) ~> aggregate3"
 			]
 		}
 	}
