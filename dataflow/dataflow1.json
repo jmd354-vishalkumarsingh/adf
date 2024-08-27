@@ -120,8 +120,9 @@
 				"          Address,",
 				"          City,",
 				"          State,",
-				"          {} = ERROR_FUNCTION(''),",
-				"          {} = ERROR_FUNCTION(''))) ~> aggregate2"
+				"          ZipCode,",
+				"          Country),",
+				"     count = count(CustomerID)) ~> aggregate2"
 			]
 		}
 	}
