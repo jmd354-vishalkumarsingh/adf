@@ -23,6 +23,9 @@
 			"transformations": [
 				{
 					"name": "aggregate1"
+				},
+				{
+					"name": "sort1"
 				}
 			],
 			"scriptLines": [
@@ -55,7 +58,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> Orders",
-				"Customers aggregate(groupBy(CustomerID,",
+				"sort1 aggregate(groupBy(CustomerID,",
 				"          FirstName,",
 				"          LastName,",
 				"          Email,",
@@ -64,7 +67,8 @@
 				"          City,",
 				"          State,",
 				"          ZipCode,",
-				"          Country)) ~> aggregate1"
+				"          Country)) ~> aggregate1",
+				"Customers sort(asc(ERROR_FUNCTION(''), true)) ~> sort1"
 			]
 		}
 	}
