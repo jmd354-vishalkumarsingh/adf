@@ -67,7 +67,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> Orders",
-				"aggregate2, Orders join(Customers@CustomerID == Orders@CustomerID,",
+				"aggregate2, Orders join(aggregate2@CustomerID == Orders@CustomerID,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
