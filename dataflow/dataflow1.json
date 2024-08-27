@@ -15,9 +15,6 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "select1"
-				},
-				{
 					"name": "filter1"
 				}
 			],
@@ -37,21 +34,9 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Customers",
-				"Customers select(mapColumn(",
-				"          CustomerID,",
-				"          FirstName,",
-				"          LastName,",
-				"          Email,",
-				"          PhoneNumber,",
-				"          Address,",
-				"          City,",
-				"          State,",
-				"          ZipCode,",
-				"          Country",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 filter(ERROR_FUNCTION('isNull(CustomerID) == false() && isNull(FirstName) == false() && isNull(LastName) == false() && isNull(Email) == false() __NEW_LINE_R____NEW_LINE_N__&& isNull(PhoneNumber) == false() && isNull(Address) == false() && isNull(City) == false() __NEW_LINE_R____NEW_LINE_N__&& isNull(State) == false() && isNull(ZipCode) == false() && isNull(Country) == false()Email')) ~> filter1"
+				"Customers filter(isNull(CustomerID) == false() && isNull(FirstName) == false() && isNull(LastName) == false() && isNull(Email) == false() \r",
+				"&& isNull(PhoneNumber) == false() && isNull(Address) == false() && isNull(City) == false() \r",
+				"&& isNull(State) == false() && isNull(ZipCode) == false() && isNull(Country) == false()) ~> filter1"
 			]
 		}
 	}
