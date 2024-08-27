@@ -29,6 +29,9 @@
 				},
 				{
 					"name": "select1"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -84,11 +87,11 @@
 				"          Quantity,",
 				"          OrderTimestamp,",
 				"          Price,",
-				"          CustomerID = Orders@CustomerID,",
 				"          {net price}",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 aggregate(groupBy(CustomerID)) ~> aggregate1"
 			]
 		}
 	}
