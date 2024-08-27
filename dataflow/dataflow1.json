@@ -67,25 +67,8 @@
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
 				"join1 derive({net price} = multiply(toInteger(Quantity), toDouble(Price))) ~> derivedColumn1",
-				"derivedColumn1 aggregate(groupBy(Customers@CustomerID,",
-				"          FirstName,",
-				"          LastName,",
-				"          Email,",
-				"          PhoneNumber,",
-				"          Address,",
-				"          City,",
-				"          State,",
-				"          ZipCode,",
-				"          Country,",
-				"          OrderID,",
-				"          ProductID,",
-				"          ProductName,",
-				"          Quantity,",
-				"          OrderTimestamp,",
-				"          Price,",
-				"          Orders@CustomerID,",
-				"          {net price}),",
-				"     {net price} = ERROR_FUNCTION('max(net price)')) ~> aggregate1"
+				"derivedColumn1 aggregate(groupBy(Customers@CustomerID),",
+				"     count = count(CustomerID)) ~> aggregate1"
 			]
 		}
 	}
