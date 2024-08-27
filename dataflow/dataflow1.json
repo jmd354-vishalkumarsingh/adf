@@ -22,7 +22,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "filter1"
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -55,7 +55,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> Orders",
-				"Customers filter(distinct(CustomerID)) ~> filter1"
+				"Customers aggregate(groupBy(CustomerID)) ~> aggregate1"
 			]
 		}
 	}
