@@ -26,6 +26,9 @@
 				},
 				{
 					"name": "sort1"
+				},
+				{
+					"name": "sort2"
 				}
 			],
 			"scriptLines": [
@@ -68,7 +71,8 @@
 				"          State,",
 				"          ZipCode,",
 				"          Country)) ~> aggregate1",
-				"Customers sort(asc(ERROR_FUNCTION(''), true)) ~> sort1"
+				"Customers sort(asc(CustomerID, true)) ~> sort1",
+				"Orders sort(asc(CustomerID, true)) ~> sort2"
 			]
 		}
 	}
