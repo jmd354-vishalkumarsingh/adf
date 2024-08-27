@@ -12,7 +12,8 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"container": "input-container-assessment"
-			}
+			},
+			"firstRowAsHeader": true
 		},
 		"schema": [
 			{
