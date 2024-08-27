@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "data_1d24b7f2-2609-4301-89ce-ee0932c7ad09_d912327d-6bcd-494a-9db1-89d22fc3dbbf.txt",
 				"container": "output-consolidated"
 			},
 			"columnDelimiter": ",",
