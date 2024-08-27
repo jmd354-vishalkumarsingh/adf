@@ -22,7 +22,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "join1"
+					"name": "filter1"
 				}
 			],
 			"scriptLines": [
@@ -55,11 +55,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> Orders",
-				"Customers, Orders join(Customers@CustomerID == Orders@CustomerID,",
-				"     joinType:'inner',",
-				"     matchType:'exact',",
-				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1"
+				"Customers filter(distinct(CustomerID)) ~> filter1"
 			]
 		}
 	}
