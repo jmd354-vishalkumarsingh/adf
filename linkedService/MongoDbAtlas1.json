@@ -1,0 +1,13 @@
+{
+	"name": "MongoDbAtlas1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "MongoDbAtlas",
+		"typeProperties": {
+			"connectionString": "mongodb://atlas-sql-66ceef0f90fecf3a49ac8764-hzxbo.a.query.mongodb.net/sample_mflix?ssl=true&authSource=admin",
+			"database": "survey",
+			"driverVersion": "v2"
+		}
+	}
+}
