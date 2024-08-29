@@ -5,6 +5,8 @@
 			{
 				"name": "copy survey data",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -26,7 +28,48 @@
 						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']"
+								},
+								"sink": {
+									"name": "_id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['name']"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['description']"
+								},
+								"sink": {
+									"name": "description",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['designation'][0]"
+								},
+								"sink": {
+									"name": "designation",
+									"type": "String"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
@@ -67,7 +110,71 @@
 						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']"
+								},
+								"sink": {
+									"name": "_id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['name']"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['emailId']"
+								},
+								"sink": {
+									"name": "emailId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['password']"
+								},
+								"sink": {
+									"name": "password",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['role']"
+								},
+								"sink": {
+									"name": "role",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['designation']"
+								},
+								"sink": {
+									"name": "designation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['__v']['$numberInt']"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
@@ -108,7 +215,84 @@
 						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$numberInt']"
+								},
+								"sink": {
+									"name": "ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['SurveyId']"
+								},
+								"sink": {
+									"name": "SurveyId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['question']"
+								},
+								"sink": {
+									"name": "question",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['type']"
+								},
+								"sink": {
+									"name": "type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['option1']"
+								},
+								"sink": {
+									"name": "option1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['option2']"
+								},
+								"sink": {
+									"name": "option2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['option3']"
+								},
+								"sink": {
+									"name": "option3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['option4']"
+								},
+								"sink": {
+									"name": "option4",
+									"type": "String"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
@@ -149,7 +333,48 @@
 						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$numberInt']"
+								},
+								"sink": {
+									"name": "ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['questionID']['$numberInt']"
+								},
+								"sink": {
+									"name": "QuestionID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"path": "$['answer']"
+								},
+								"sink": {
+									"name": "answer",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userID']"
+								},
+								"sink": {
+									"name": "UserID",
+									"type": "String"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
