@@ -5,6 +5,9 @@
 			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Assessment Ques 2/Input"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
