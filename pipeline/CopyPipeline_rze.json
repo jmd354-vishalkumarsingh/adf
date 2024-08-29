@@ -44,6 +44,7 @@
 									"tableOption": "autoCreate"
 								},
 								"enableStaging": false,
+								"enableSkipIncompatibleRow": true,
 								"validateDataConsistency": false,
 								"translator": {
 									"value": "@item().copyActivity.translator",
