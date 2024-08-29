@@ -5,23 +5,77 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "source1"
+					"dataset": {
+						"referenceName": "questions_SQL",
+						"type": "DatasetReference"
+					},
+					"name": "questionTable"
+				},
+				{
+					"dataset": {
+						"referenceName": "responses_SQL",
+						"type": "DatasetReference"
+					},
+					"name": "responseTable"
 				}
 			],
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "ScrappedData",
+						"referenceName": "AzureSqlTable1",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "saveInSQLDatabase"
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "join1"
+				},
+				{
+					"name": "select1"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1",
-				"source1 sink(allowSchemaDrift: true,",
+				"source(output(",
+				"          ID as decimal(38,18),",
+				"          SurveyId as string,",
+				"          question as string,",
+				"          type as string,",
+				"          option1 as string,",
+				"          option2 as string,",
+				"          option3 as string,",
+				"          option4 as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> questionTable",
+				"source(output(",
+				"          ID as decimal(38,18),",
+				"          QuestionID as decimal(38,18),",
+				"          answer as string,",
+				"          UserID as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> responseTable",
+				"questionTable, responseTable join(questionTable@ID == QuestionID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 select(mapColumn(",
+				"          ID = questionTable@ID,",
+				"          SurveyId,",
+				"          question,",
+				"          answer,",
+				"          UserID",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -30,7 +84,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError') ~> saveInSQLDatabase"
 			]
 		}
 	}
