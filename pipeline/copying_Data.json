@@ -76,12 +76,6 @@
 						"referenceName": "surveys",
 						"type": "DatasetReference"
 					}
-				],
-				"outputs": [
-					{
-						"referenceName": "AzureSqlTable1",
-						"type": "DatasetReference"
-					}
 				]
 			},
 			{
