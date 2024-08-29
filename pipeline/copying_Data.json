@@ -71,7 +71,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "MongoDbAtlasCollection1",
+						"referenceName": "Users",
 						"type": "DatasetReference"
 					}
 				],
@@ -112,7 +112,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "MongoDbAtlasCollection2",
+						"referenceName": "Questions",
 						"type": "DatasetReference"
 					}
 				],
@@ -153,7 +153,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "MongoDbAtlasCollection3",
+						"referenceName": "Responses",
 						"type": "DatasetReference"
 					}
 				],

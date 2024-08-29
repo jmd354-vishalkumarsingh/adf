@@ -1,5 +1,5 @@
 {
-	"name": "MongoDbAtlasCollection3",
+	"name": "Responses",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "MongoDbAtlas1",
