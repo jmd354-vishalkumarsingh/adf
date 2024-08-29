@@ -1,0 +1,49 @@
+{
+	"name": "AzureSqlTable5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase4",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "surveyId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "question",
+				"type": "nvarchar"
+			},
+			{
+				"name": "type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "option1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "option2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "option3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "option4",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "questions"
+		}
+	}
+}
