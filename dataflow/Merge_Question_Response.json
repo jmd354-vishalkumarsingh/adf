@@ -22,7 +22,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "QuestionsResponse",
 						"type": "DatasetReference"
 					},
 					"name": "saveInSQLDatabase"
