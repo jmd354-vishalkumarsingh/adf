@@ -5,6 +5,9 @@
 			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Assessment Ques 1/Output to SQL DB"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
