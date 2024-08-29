@@ -1,6 +1,9 @@
 {
 	"name": "UserResponses",
 	"properties": {
+		"folder": {
+			"name": "Assessment DF"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [

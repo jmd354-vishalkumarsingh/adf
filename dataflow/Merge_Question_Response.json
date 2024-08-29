@@ -1,6 +1,9 @@
 {
 	"name": "Merge_Question_Response",
 	"properties": {
+		"folder": {
+			"name": "Assessment DF"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
