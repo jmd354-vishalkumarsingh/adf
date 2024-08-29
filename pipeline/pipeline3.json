@@ -18,7 +18,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflow3",
+						"referenceName": "Merge_Question_Response",
 						"type": "DataFlowReference"
 					},
 					"compute": {
