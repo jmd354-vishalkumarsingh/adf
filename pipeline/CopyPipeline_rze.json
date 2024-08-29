@@ -35,40 +35,9 @@
 								}
 							],
 							"typeProperties": {
-								"source": {
-									"type": "MongoDbAtlasSource",
-									"batchSize": 100
-								},
-								"sink": {
-									"type": "AzureSqlSink",
-									"tableOption": "autoCreate"
-								},
 								"enableStaging": false,
-								"enableSkipIncompatibleRow": true,
-								"validateDataConsistency": false,
-								"translator": {
-									"value": "@item().copyActivity.translator",
-									"type": "Expression"
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "SourceDataset_rze",
-									"type": "DatasetReference",
-									"parameters": {
-										"cw_collection": "@item().source.collection"
-									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "DestinationDataset_rze",
-									"type": "DatasetReference",
-									"parameters": {
-										"cw_table": "@item().destination.table"
-									}
-								}
-							]
+								"enableSkipIncompatibleRow": true
+							}
 						}
 					]
 				}
