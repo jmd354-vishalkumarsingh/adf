@@ -1,0 +1,75 @@
+{
+	"name": "Detailed_Product",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Assessment Ques 2/Input"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "categories_subcategories_items.csv",
+				"container": "assessment-input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Category",
+				"type": "String"
+			},
+			{
+				"name": "CategoryId",
+				"type": "String"
+			},
+			{
+				"name": "Subcategory",
+				"type": "String"
+			},
+			{
+				"name": "SubcategoryName",
+				"type": "String"
+			},
+			{
+				"name": "SubcategoryId",
+				"type": "String"
+			},
+			{
+				"name": "DepartmentCode",
+				"type": "String"
+			},
+			{
+				"name": "MinShipDays",
+				"type": "String"
+			},
+			{
+				"name": "MaxShipDays",
+				"type": "String"
+			},
+			{
+				"name": "SeriesCode",
+				"type": "String"
+			},
+			{
+				"name": "SeriesName",
+				"type": "String"
+			},
+			{
+				"name": "BrandCode",
+				"type": "String"
+			},
+			{
+				"name": "BrandName",
+				"type": "String"
+			}
+		]
+	}
+}
