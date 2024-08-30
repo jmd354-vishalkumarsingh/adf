@@ -28,15 +28,15 @@
 						"referenceName": "Category_Sorting",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "Store"
 				}
 			],
 			"transformations": [
 				{
-					"name": "join1"
+					"name": "JoinTables"
 				},
 				{
-					"name": "select1"
+					"name": "selectRequiredColumns"
 				}
 			],
 			"scriptLines": [
@@ -66,11 +66,11 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> DetailedProductList",
 				"categoriesData, DetailedProductList join({Automation Components} == Category,",
-				"     joinType:'right',",
+				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1",
-				"join1 select(mapColumn(",
+				"     broadcast: 'auto')~> JoinTables",
+				"JoinTables select(mapColumn(",
 				"          {Motion Type} = {Linear Motion},",
 				"          Category,",
 				"          Subcategory,",
@@ -82,8 +82,8 @@
 				"          BrandName",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectRequiredColumns",
+				"selectRequiredColumns sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -92,7 +92,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError') ~> Store"
 			]
 		}
 	}
