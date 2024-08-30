@@ -1,0 +1,65 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"folder": {
+			"name": "Assessment DF 2"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Question_2",
+						"type": "DatasetReference"
+					},
+					"name": "categoriesData"
+				},
+				{
+					"dataset": {
+						"referenceName": "Detailed_Product",
+						"type": "DatasetReference"
+					},
+					"name": "DetailedProductList"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "join1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          {Linear Shafts} as string,",
+				"          {Linear Motion} as string,",
+				"          {Automation Components} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> categoriesData",
+				"source(output(",
+				"          Category as string,",
+				"          CategoryId as string,",
+				"          Subcategory as string,",
+				"          SubcategoryName as string,",
+				"          SubcategoryId as string,",
+				"          DepartmentCode as string,",
+				"          MinShipDays as string,",
+				"          MaxShipDays as string,",
+				"          SeriesCode as string,",
+				"          SeriesName as string,",
+				"          BrandCode as string,",
+				"          BrandName as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> DetailedProductList",
+				"categoriesData, DetailedProductList join({Automation Components} == Category,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1"
+			]
+		}
+	}
+}
