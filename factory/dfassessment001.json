@@ -1,9 +1,0 @@
-{
-	"name": "dfassessment001",
-	"location": "southeastasia",
-	"identity": {
-		"type": "SystemAssigned",
-		"principalId": "6e8a2737-16cb-4d41-8181-fdb259f9fc96",
-		"tenantId": "2800c0a0-70e9-49be-8733-faeaa6aced99"
-	}
-}
